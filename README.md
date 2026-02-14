@@ -1,73 +1,27 @@
-# React + TypeScript + Vite
+# Council of History: A Virtual Debate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive AI-powered debate arena where historical figures (as of the current version, **Julius Caesar** and **George Washington**) clash over modern and historical topics. Built for the **NVIDIA GTC 2026 Golden Ticket Contest** https://developer.nvidia.com/gtc-golden-ticket-contest.
 
-Currently, two official plugins are available:
+## 🚀 Overview
+This project demonstrates the power of **NVIDIA Nemotron-Mini** running locally. By leveraging Ollama and custom Modelfiles, I've fine-tuned the personas of two historical titans to engage in a multi-round, structured debate.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tech Stack
+* **AI Model:** NVIDIA Nemotron-Mini (via Ollama)
+* **Runtime:** Bun
+* **Frontend:** React 19 + TypeScript
+* **Build Tool:** Vite
 
-## React Compiler
+## 🛠️ Prerequisites
+Before running, ensure you have the following installed:
+1.  [Bun](https://bun.sh/)
+2.  [Ollama](https://ollama.com/) (Must be running in the background)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚡ Quick Start
+To get the project up and running with a single command:
 
-## Expanding the ESLint configuration
+```bash
+# Install dependencies
+bun install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Setup models and start the development server
+bun run dev
