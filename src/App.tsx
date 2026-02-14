@@ -75,10 +75,12 @@ function App() {
   const waitForCaesar = () => new Promise<void>((resolve) => { caesarResolveRef.current = resolve; });
   const waitForWashington = () => new Promise<void>((resolve) => { washResolveRef.current = resolve; });
 
-  // Auto-scroll transcript
+  // Auto-scroll transcript AND to winner selection when it appears
   useEffect(() => {
-    transcriptEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [fullTranscript]);
+    if (round > MAX_ROUNDS && !isDebating) {
+      transcriptEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [round]);
 
   const startDebate = async () => {
     if (!topic || isDebating) return;
@@ -166,9 +168,9 @@ function App() {
 
   return (
     <div className="container">
-      {/* ... Header stays exactly the same ... */}
       <header className="header">
-        <h1>The Council of History</h1>
+        <h1>Council of History</h1>
+        <h2>A Virtual Debate</h2>
         <p>Running Locally via Ollama & NVIDIA Nemotron-Mini</p>
 
         <div className="input-area">
@@ -189,9 +191,14 @@ function App() {
       <main className="debate-arena">
         {/* Left Side: Caesar */}
         <div className={`character-panel theme-caesar ${activeSpeaker === 'Caesar' ? 'active' : ''}`}>
-          <div className="portrait-container">
-            <div className="portrait">
-              <img src="/resources/images/julius_caesar.png" alt="Caesar" />
+          <div className="visuals-row">
+            <div className="decoration-box left">
+              <img src="/resources/images/temple_of_caesar.png" alt="Temple of Caesar" />
+            </div>
+            <div className="portrait-container">
+              <div className="portrait">
+                <img src="/resources/images/julius_caesar.png" alt="Caesar" />
+              </div>
             </div>
           </div>
           <div className="dialogue-box">
@@ -210,9 +217,14 @@ function App() {
 
         {/* Right Side: Washington */}
         <div className={`character-panel theme-washington ${activeSpeaker === 'Washington' ? 'active' : ''}`}>
-          <div className="portrait-container">
-            <div className="portrait">
-              <img src="/resources/images/george_washington.png" alt="Washington" />
+          <div className="visuals-row">
+            <div className="portrait-container">
+              <div className="portrait">
+                <img src="/resources/images/george_washington.png" alt="Washington" />
+              </div>
+            </div>
+            <div className="decoration-box right">
+              <img src="/resources/images/cherry_tree.png" alt="Cherry Tree" />
             </div>
           </div>
           <div className="dialogue-box">
@@ -230,7 +242,6 @@ function App() {
         </div>
       </main>
 
-      {/* ... Winner Selection and Transcript stay exactly the same ... */}
       {round > MAX_ROUNDS && !isDebating && (
         <div className="winner-selection">
           <h2>The debate has concluded. Who won?</h2>
@@ -240,6 +251,7 @@ function App() {
           </div>
         </div>
       )}
+      <div ref={transcriptEndRef} />
 
       <div className="transcript-log">
         <h3>Debate Transcript</h3>
@@ -250,9 +262,9 @@ function App() {
               <span>{turn.text}</span>
             </div>
           ))}
-          <div ref={transcriptEndRef} />
         </div>
       </div>
+
     </div>
   );
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -35,9 +37,16 @@ body {
 }
 
 .header h1 {
-  font-size: 2.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
   color: #1a1a1a;
-  /* Dark bold header */
+  letter-spacing: 2px;
+}
+
+.header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: #808080;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
@@ -172,13 +181,12 @@ body {
 
 /* Dialogue Boxes (Glassmorphism so marble shows through) */
 .dialogue-box {
-  width: 100%;
+  width: 450px;
+  margin: 0 auto;
   background: var(--char-bg);
   backdrop-filter: blur(8px);
-  /* Frosted glass effect */
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: 4px solid var(--char-primary);
-  /* Uses theme color */
   border-radius: 8px;
   padding: 1.5rem;
   min-height: 160px;
@@ -308,6 +316,29 @@ body {
 
 .transcript-row.washington strong {
   color: #0033a0;
+}
+
+.visuals-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.portrait-container {
+  display: flex;
+  justify-content: center;
+}
+
+.decoration-box img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes fadeIn {
