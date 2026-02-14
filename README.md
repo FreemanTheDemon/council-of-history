@@ -1,6 +1,7 @@
 # Council of History: A Virtual Debate
 
-An interactive AI-powered debate arena where historical figures (as of the current version, **Julius Caesar** and **George Washington**) clash over modern and historical topics. Built for the **NVIDIA GTC 2026 Golden Ticket Contest** https://developer.nvidia.com/gtc-golden-ticket-contest.
+An interactive AI-powered debate arena where historical figures (as of the current version, it is a debate between **Julius Caesar** and **George Washington**) clash over modern and historical topics. Built for the **NVIDIA GTC 2026 Golden Ticket Contest**.
+https://developer.nvidia.com/gtc-golden-ticket-contest.
 
 ## Overview
 This project demonstrates the power of **NVIDIA Nemotron-Mini** running locally. By leveraging Ollama and custom Modelfiles, I've fine-tuned the personas of two historical titans to engage in a multi-round, structured debate.
