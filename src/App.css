@@ -1,0 +1,337 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Elegant Marble-like Background using Gradients */
+  background-color: #fdfbf7;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(200, 200, 205, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(240, 240, 245, 0.6) 100%);
+  color: #2c3e50;
+  /* Dark slate text for readability */
+  font-family: 'Georgia', serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+}
+
+/* Centered Header & Input Area */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  color: #1a1a1a;
+  /* Dark bold header */
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.header p {
+  color: #555555;
+  margin-bottom: 1.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+.input-area {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.input-area input {
+  width: 60%;
+  max-width: 500px;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: system-ui, sans-serif;
+}
+
+.input-area input:focus {
+  border-color: #4a4a4a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-area button {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: #fdfbf7;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.input-area button:hover:not(:disabled) {
+  background-color: #333333;
+  transform: translateY(-2px);
+}
+
+.input-area button:disabled {
+  background-color: #cccccc;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+/* Split Screen Debate Arena */
+.debate-arena {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex: 1;
+}
+
+/* --- SCALABLE CHARACTER THEME SYSTEM --- */
+/* By defining variables here, you can easily add new characters later */
+.theme-caesar {
+  --char-primary: #8b0000;
+  /* Imperial Red */
+  --char-accent: #d4af37;
+  /* Gold */
+  --char-bg: rgba(255, 245, 245, 0.85);
+  /* Very faint red tint */
+}
+
+.theme-washington {
+  --char-primary: #0033a0;
+  /* Continental Blue */
+  --char-accent: #789bca;
+  /* Lighter Blue/White */
+  --char-bg: rgba(245, 248, 255, 0.85);
+  /* Very faint blue tint */
+}
+
+/* Character Columns */
+.character-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.6;
+  /* Dimmed when not speaking */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.character-panel.active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* Image Placeholders */
+.portrait-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.portrait {
+  width: 250px;
+  height: 350px;
+  border: 4px solid var(--char-primary);
+  /* Uses theme color */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dialogue Boxes (Glassmorphism so marble shows through) */
+.dialogue-box {
+  width: 100%;
+  background: var(--char-bg);
+  backdrop-filter: blur(8px);
+  /* Frosted glass effect */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--char-primary);
+  /* Uses theme color */
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-height: 160px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dialogue-box h3 {
+  margin-bottom: 0.8rem;
+  color: var(--char-primary);
+  /* Uses theme color */
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--char-accent);
+  /* Uses theme accent */
+  padding-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.dialogue-box p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+/* Status Text Animations */
+.thinking {
+  font-style: italic;
+  color: var(--char-primary);
+  animation: pulse 1.5s infinite;
+}
+
+.waiting {
+  font-style: italic;
+  color: #888;
+  font-size: 1rem;
+}
+
+/* --- NEW: Winner Selection UI --- */
+.winner-selection {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in;
+}
+
+.winner-selection h2 {
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.winner-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.winner-buttons button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-caesar {
+  background-color: var(--char-primary, #8b0000);
+  color: white;
+}
+
+.btn-washington {
+  background-color: var(--char-primary, #0033a0);
+  color: white;
+}
+
+.winner-buttons button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- NEW: Transcript Log --- */
+.transcript-log {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.transcript-log h3 {
+  color: #444;
+  margin-bottom: 1rem;
+  font-family: system-ui, sans-serif;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.transcript-messages {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 1rem;
+}
+
+.transcript-row {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.transcript-row.moderator strong {
+  color: #555;
+}
+
+.transcript-row.caesar strong {
+  color: #8b0000;
+}
+
+.transcript-row.washington strong {
+  color: #0033a0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
