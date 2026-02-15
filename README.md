@@ -27,6 +27,7 @@ bun install
 
 # Setup models and start the development server
 bun run dev
+```
 
-# Contact
+## Contact
 @freemanbird@gmail.com
