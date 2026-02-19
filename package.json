@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "setup-models": "ollama pull nemotron-mini && ollama create caesar -f caesar.modelfile && ollama create washington -f washington.modelfile",
+    "setup-models": "ollama pull nemotron-mini && ollama create caesar -f models/caesar.modelfile && ollama create washington -f models/washington.modelfile",
     "dev": "bun run setup-models && vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
