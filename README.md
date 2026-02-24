@@ -29,12 +29,5 @@ bun install
 bun run dev
 ```
 
-## Changelog
-### 2/14/2026
-  * First working build
-
-### 2/19/2026
-  * Fixed dev command
-
 ## Contact
 @freemanbird@gmail.com
